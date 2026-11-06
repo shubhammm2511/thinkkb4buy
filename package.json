@@ -1,0 +1,23 @@
+{
+  "name": "thinkb4buy",
+  "version": "0.1.0",
+  "description": "Neighbourhood reports, nearby societies and buyer calculators for Bengaluru homebuyers. Static site, no backend, no AI, no paid APIs.",
+  "private": true,
+  "license": "MIT",
+  "type": "commonjs",
+  "engines": {
+    "node": "26.x"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "check": "node scripts/check.js",
+    "test": "node test/smoke.js",
+    "build": "node -e \"const fs=require('fs');fs.rmSync('dist',{recursive:true,force:true});fs.mkdirSync('dist');['index.html','style.css','data.js','app.js'].forEach(f=>fs.copyFileSync(f,'dist/'+f));console.log('Built site into dist/')\"",
+    "build:artifact": "node build.js",
+    "preview": "node scripts/dev.js dist",
+    "verify": "npm run check && npm test && npm run build"
+  },
+  "devDependencies": {
+    "jsdom": "^26.1.0"
+  }
+}
